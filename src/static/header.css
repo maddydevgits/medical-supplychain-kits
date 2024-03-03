@@ -1,0 +1,165 @@
+#navblock-admin-details {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 20px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+#navblock-admin-link:hover #navblock-admin-details {
+    display: block;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo {
+    height: 50px;
+}
+
+header nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+header nav .left-nav{
+    display: flex ;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    list-style-type: none;
+    
+}
+
+header nav li {
+    display: inline-block;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+header nav a:hover {
+    color: #ccc;
+}
+header nav button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    border-radius:10px;
+}
+.right-nav li{
+    border:1px solid black;
+    border-radius: 10px;
+    background: whitesmoke;
+    transition: all 0.3s ease-in-out;
+}
+.right-nav li:hover{
+    background:#333;
+    border: 1px solid #fff;
+}
+.right-nav li:hover button{
+    color:#fff;
+}
+.right-nav button{
+    color: black;
+    padding: 8px 15px;
+    transition: all 0.2s ease-in-out;
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.login-popup, 
+.registration-popup{
+    width: 350px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.login-as {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.login-as p {
+    margin-bottom: 20px;
+}
+
+.login-as button {
+    padding: 10px 15px;
+    background-color:#45a049;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-as button:first-child {
+    margin-left:10px;
+}
+
+.login-as button:last-child {
+    margin-left: 3px;
+    margin-top: 10px;
+}
+
+.login-as button:hover {
+    background-color: #45a049;
+}

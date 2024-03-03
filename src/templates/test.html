@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .login-as {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 id="loginHeading">Login Form</h2>
+
+    <form id="loginForm">
+        <label for="usernameOrEmail">1. Username or Email</label>
+        <input type="text" id="usernameOrEmail" name="usernameOrEmail" required>
+
+        <label for="password">2. Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Login">
+
+        <div class="login-as">
+            <p>Or login as:</p>
+            <button onclick="loginAs('manufacturer')">Login as Manufacturer</button>
+            <button onclick="loginAs('distributor')">Login as Distributor</button>
+        </div>
+    </form>
+
+    <script>
+        function loginAs(role) {
+            // Perform actions based on the selected role (manufacturer or distributor)
+            alert('Logging in as ' + role);
+
+            // Update the heading based on the selected role
+            document.getElementById('loginHeading').innerText = role.charAt(0).toUpperCase() + role.slice(1) + ' Login Form';
+            // Update the document title
+            document.title = 'Login Form - ' + role.charAt(0).toUpperCase() + role.slice(1);
+        }
+    </script>
+</body>
+
+</html>

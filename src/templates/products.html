@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal.css') }}">
+    <style>
+        #two {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <section class="content">
+            <div class="header">
+                <img src="{{ url_for('static', filename='images/pharmalogo.jpg') }}" alt="Example Image" class="logo">
+                <h1>Pharma Trace</h1>
+            </div>
+        </section>
+        <nav>
+            <div class="left-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="distributors.html">Distributor MS</a>
+                <li><a href="products.html">Product MS</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </div>
+            <div class="right-nav">
+                <div class="dropdown">
+                    <button class="profile-btn">Profile</button>
+                    <div class="overlay-btns">
+                      <button onclick="openPopup()">My Profile</button>
+                      <button onclick="logout()">Logout</button>
+                    </div>
+                  </div>
+                
+                  <div class="overlay" id="popupOverlay">
+                    <div class="popup-content">
+                      <h2>Profile Details</h2>
+                        <p>Detail 1: </p>
+                        <p>Detail 2: </p>
+                        <p>Detail 3: </p>
+                        <p>Detail 4: </p>
+                        <p>Detail 5: </p>
+                        <p>Detail 6: </p>
+                        <p>Detail 7: </p>
+                        <p>Detail 8: </p>
+                      <!-- Add more details as needed -->
+                      <button class="close-btn1" onclick="closePopup()">Close</button>
+                    </div>
+                  </div>
+                
+            </div>
+        </nav>
+    </header>
+    <div class="info-container">
+        <h1>Product Management System</h1>
+
+        <div class="info-options-box">
+            <!-- Buttons to trigger actions -->
+            <button onclick="showPopup('Add Product')">Add Product</button>
+            <button>Products</button>
+        </div>
+    </div>
+
+
+
+    <!-- Popup container -->
+    <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+    <div class="popup" id="popup">
+        <!-- Product details form -->
+        <h2 id="popupTitle">Add Product</h2>
+        <form id="two">
+            <form id="addProductForm">
+
+
+                <div class="form-half">
+                    <label for="productId">1. Product ID:</label>
+                    <input type="text" id="productId" required>
+
+                    <label for="productName">2. Product Name:</label>
+                    <input type="text" id="productName" required>
+
+                    <label for="manufacturerInfo">3. Manufacturer Information:</label>
+                    <input type="text" id="manufacturerInfo" required>
+
+                    <label for="lotNumber">4. Lot or Batch Number:</label>
+                    <input type="text" id="lotNumber" required>
+
+                    <label for="manufacturingDate">5. Manufacturing Date:</label>
+                    <input type="date" id="manufacturingDate" required>
+
+                    <label for="expirationDate">6. Expiration Date:</label>
+                    <input type="date" id="expirationDate" required>
+
+                    <label for="serialNumber">7. Serial Number:</label>
+                    <input type="text" id="serialNumber" required>
+
+                    <label for="ingredients">8. Ingredients/Components:</label>
+                    <input type="text" id="ingredients" required>
+                </div>
+                <div class="form-half">
+
+
+                    <label for="qualityControl">9. Quality Control Information:</label>
+                    <input type="text" id="qualityControl" required>
+
+                    <label for="storageRequirements">10. Storage Requirements:</label>
+                    <input type="text" id="storageRequirements" required>
+
+                    <label for="instructionsForUse">11. Instructions for Use:</label>
+                    <input type="text" id="instructionsForUse" required>
+
+                    <label for="safetyInformation">12. Safety Information:</label>
+                    <input type="text" id="safetyInformation" required>
+
+                    <label for="regulatoryCompliance">13. Regulatory Compliance Information:</label>
+                    <input type="text" id="regulatoryCompliance" required>
+
+                    <label for="packagingInfo">14. Packaging Information:</label>
+                    <input type="text" id="packagingInfo" required>
+
+                    <label for="documentation">15. Documentation:</label>
+                    <input type="text" id="documentation" required>
+
+                    <label for="udi">16. Unique Device Identifier (UDI):</label>
+                    <input type="text" id="udi" required>
+                </div>
+
+
+                <!-- Display messages -->
+                <div id="statusMessage" class="message"></div>
+            </form>
+            <div class="form-btns">
+                <button type="submit">Add Product</button>
+                <button onclick="hidePopup()">Close</button>
+            </div>
+
+            <!-- Close button -->
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/static.js') }}" defer></script>
+    <script>
+        // products
+
+        function showPopup(action) {
+            if (action === 'Add Product') {
+                // Customize this function to load product details based on the action
+                // For simplicity, just setting a placeholder title
+                document.getElementById('popupTitle').textContent = action;
+
+                // Display the overlay and popup
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('popup').style.display = 'block';
+            }
+        }
+
+        function hidePopup() {
+            // Hide the overlay and popup
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function openPopup() {
+            document.getElementById("popupOverlay").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("popupOverlay").style.display = "none";
+        }
+
+        function logout() {
+            // Add your logic for logout here
+        }
+    </script>
+
+</body>
+{% include 'footer.html' %}
+<div id="footer-placeholder"></div>
+</html>

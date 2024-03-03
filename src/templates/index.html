@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/pharmalogo.png') }}" type="image/x-icon">
+
+    <title>Pharma Trace</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='footer.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <div id="header-placeholder"></div>
+    <div class="pharma-trace-heading">
+        <h1>Pharma Trace</h1>
+    </div>
+
+    <div class="pharma-trace-image">
+        <img src="{{ url_for('static', filename='images/pharma.png') }}" alt="Example Image">
+    </div>
+
+    <img id="leftImage" src="https://www.pngall.com/wp-content/uploads/8/Magnifying-Glass-Search-PNG-Image-HD.png"
+        alt="Left Image">
+    <img id="rightImage" src="https://cdni.iconscout.com/illustration/premium/thumb/scan-qr-code-4489823-3766193.png"
+        alt="Right Image">
+
+    <section class="user-container">
+        <div class="opt-home search-product-id">
+            <input type="search" placeholder="Search by Product Id...." id="search-product" autocomplete="off">
+            <button>Search</button>
+        </div>
+
+    </section>
+    <div id="cameraContainer">
+        <button id="toggleButton" onclick="toggleCamera()">Scan Me</button>
+    </div>
+
+    <!-- <section class="main-section">
+        <div class="main-content">
+            <div class="main-inner-box">
+                <h2>Objective</h2>
+                <ul>
+                    <li>The primary objective of this project is to facilitate a significant transformation
+                        in tablet packaging, specifically transitioning from the packaging standards
+                        employed for common tablets such as Paracetamol or Dolo-650, which are primarily
+                        used to alleviate symptoms associated with general ailments such as fever, cold, and
+                        body pains.</li>
+                    <li>The focus is to extend this packaging enhancement to encompass tablets designed for
+                        the treatment of critical diseases such as oral chemotherapy for blood cancer.
+                        Notably, the price per tablet for these specialized medications is substantially
+                        higher, with each round of treatment costing approximately ₹56,000.</li>
+                </ul>
+
+                <h2>Area Where This Idea Is Applicable</h2>
+                <ul>
+                    <li>Sealing the tablets (or) Packaging the tablets.</li>
+                </ul>
+            </div>
+
+            <div class="main-inner-box">
+                <h2>Overview</h2>
+                <ul>
+                    <li>According to the Food and Drug Administration (FDA), over the past four decades,
+                        starting from 1979, numerous journals have reported a concerning trend of increasing
+                        death rates linked to the consumption of expired tablets. The ratio of such
+                        incidents has been observed to rise by approximately three times per year.</li>
+                </ul>
+            </div>
+
+            ... More content ...
+
+            <div class="main-inner-box">
+                <h2>Our Solution</h2>
+                <ul>
+                    <li>In response to this problem, our solution aims to enhance transparency and safety in
+                        the pharmaceutical industry. We propose implementing comprehensive packaging
+                        standards that ensure crucial information is readily accessible to consumers. Each
+                        packing factory will provide detailed information such as Brand/Trade Name, Generic
+                        Name, Strength, and Dosage Form, Batch Number/Lot Number, Expiry Date, Manufacturing
+                        Date, Storage Conditions, Barcodes, and Product Tracking.</li>
+                    <li>Furthermore, manufacturer information will be prominently displayed at the back of
+                        the strip and on every part of the packaging where the drug is inserted. To ensure
+                        clarity and easy verification, a unique unicode representing the precise manufacture
+                        date will be incorporated. This approach empowers every consumer, regardless of
+                        their educational background, to have access to accurate and up-to-date information
+                        about the product they are consuming.</li>
+                    <li>By implementing these comprehensive packaging standards, we anticipate a significant
+                        reduction in the death rate, estimated at 85%. Improved visibility of manufacture
+                        details will enable consumers to make informed decisions, avoid counterfeit or
+                        expired products, and ensure their safety when using medical tablets.</li>
+
+                </ul>
+            </div>
+        </div>
+    </section> -->
+    {% include 'footer.html' %}
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // register and login Open popup function
+        function openPopup(popupId) {
+            // Close other popups before opening the selected one
+            var otherPopups = document.querySelectorAll('.popup');
+            for (var i = 0; i < otherPopups.length; i++) {
+                if (otherPopups[i].id !== popupId) {
+                    otherPopups[i].style.display = "none";
+                }
+            }
+
+            document.getElementById(popupId).style.display = "block";
+        }
+
+        // Close popup function
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = "none";
+        }
+
+        // Close popup when clicking outside or on the "X" button
+        window.onclick = function (event) {
+            var popups = document.querySelectorAll('.popup');
+            for (var i = 0; i < popups.length; i++) {
+                if (event.target == popups[i] || event.target.classList.contains('close-btn')) {
+                    popups[i].style.display = "none";
+                }
+            }
+        }
+
+        let videoStream;
+        let videoElement;
+
+        function toggleCamera() {
+            const container = document.getElementById('cameraContainer');
+            const button = document.getElementById('toggleButton');
+
+            if (!videoStream) {
+                // Open the camera
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function (stream) {
+                        videoStream = stream;
+
+                        videoElement = document.createElement('video');
+                        videoElement.srcObject = stream;
+                        videoElement.width = 200;
+                        videoElement.height = 200;
+                        container.appendChild(videoElement);
+
+                        videoElement.play();
+
+                        // Change button text to "Stop" when camera is open
+                        button.innerText = 'Stop Me';
+                    })
+                    .catch(function (error) {
+                        console.error('Error accessing camera: ', error);
+                    });
+            } else {
+                // Stop the camera
+                videoStream.getTracks().forEach(track => track.stop());
+                videoStream = null;
+
+                // Pause the video and remove the video element
+                if (videoElement) {
+                    videoElement.pause();
+                    container.removeChild(videoElement);
+                }
+
+                // Change button text back to "Scan Me" when camera is closed
+                button.innerText = 'Scan Me';
+            }
+        }
+    </script>
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+</body>
+
+</html>

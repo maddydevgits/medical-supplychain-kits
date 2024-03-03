@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributor Management System</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/pharmalogo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/header.css">
+    <link rel="stylesheet" href="../static/footer.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal.css') }}">
+    <style>
+        #one {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="header-placeholder"></div>
+    <header>
+        <section class="content">
+            <div class="header">
+                <img src="{{ url_for('static', filename='images/pharmalogo.jpg') }}" alt="" class="logo">
+                <h1>Pharma Trace</h1>
+            </div>
+        </section>
+        <nav>
+            <div class="left-nav">
+                <li><a href="/index">Home</a></li>
+                <li><a href="/distributors">Distributor MS</a>
+                <li><a href="/products">Product MS</a></li>
+                <li><a href="/aboutus">About Us</a></li>
+            </div>
+            <div class="right-nav">
+                <div class="dropdown">
+                    <button class="profile-btn">Profile</button>
+                    <div class="overlay-btns">
+                        <button onclick="openPopup()">My Profile</button>
+                        <button onclick="logout()">Logout</button>
+                    </div>
+                </div>
+
+                <div class="overlay" id="popupOverlay">
+                    <div class="popup-content">
+                        <h2>Profile Details</h2>
+                        <p>Detail 1: </p>
+                        <p>Detail 2: </p>
+                        <p>Detail 3: </p>
+                        <p>Detail 4: </p>
+                        <p>Detail 5: </p>
+                        <p>Detail 6: </p>
+                        <p>Detail 7: </p>
+                        <p>Detail 8: </p>
+                        <!-- Add more details as needed -->
+                        <button class="close-btn1" onclick="closePopup()">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="info-container">
+        <h1>Distributor Management System</h1>
+
+        <div class="info-options-box">
+            <!-- Buttons to trigger actions -->
+            <button onclick="showPopup1('Add Distributor')">Add Distributor</button>
+            <button onclick="showPopup('Modify Distributor')">Modify Distributor</button>
+            <button onclick="showPopup('Delete Distributor')">Delete Distributor</button>
+            <button>Distributors</button>
+        </div>
+    </div>
+
+    <!-- Popup container -->
+    <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+    <div class="popup" id="popup">
+        <!-- Distributor details form -->
+        <h2 id="popupTitle">Add Distributor</h2>
+        <form id="one">
+            <div class="form-half">
+                <label for="distributorId">1. Distributor ID:</label>
+                <input type="text" id="distributorId" required>
+
+                <label for="distributorName">2. Distributor Name:</label>
+                <input type="text" id="distributorName" required>
+
+                <label for="contactInfo">3. Contact Information:</label>
+                <input type="text" id="contactInfo" required>
+
+                <label for="address">4. Address:</label>
+                <input type="text" id="address" required>
+
+                <label for="email">5. Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="phone">6. Phone Number:</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-half">
+
+                <label for="tin">7. Tax Identification Number (TIN):</label>
+                <input type="text" id="tin" required>
+
+                <label for="brn">8. Business Registration Number (BRN):</label>
+                <input type="text" id="brn" required>
+
+                <label for="productsServices">9. Products/Services Provided:</label>
+                <input type="text" id="productsServices" required>
+
+                <label for="emergencyContact">10. Emergency Contact Information:</label>
+                <input type="text" id="emergencyContact" required>
+
+                <label for="username">11. User name:</label>
+                <input type="text" id="username" required>
+
+                <label for="password">12. Password:</label>
+                <input type="password" id="password" required>
+
+
+            </div>
+
+
+            <!-- Display messages -->
+            <div id="statusMessage" class="message"></div>
+        </form>
+        <div class="form-btns">
+            <button type="submit">Add Distributor</button>
+            <button onclick="hidePopup()">Close</button>
+        </div>
+
+        <!-- Close button -->
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+    <script>
+        function showPopup1(action) {
+            if (action === 'Add Distributor') {
+                // Customize this function to load product details based on the action
+                // For simplicity, just setting a placeholder title
+                document.getElementById('popupTitle').textContent = action;
+
+                // Display the overlay and popup
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('popup').style.display = 'block';
+            }
+        }
+
+        function hidePopup() {
+            // Hide the overlay and popup
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function openPopup() {
+            document.getElementById("overlay").style.display = "flex";
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("popup").style.display = "none";
+        }
+
+        function logout() {
+            // Add your logic for logout here
+        }
+
+
+    </script>
+
+</body>
+{% include 'footer.html' %}
+<div id="footer-placeholder"></div>
+
+</html>

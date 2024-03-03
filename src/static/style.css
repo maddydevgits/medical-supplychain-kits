@@ -1,0 +1,346 @@
+*,
+* ::after,
+* ::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: black;
+  background-color: #f8f8f8;
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px hsl(0, 0%, 59%);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgb(144, 144, 144);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0);
+}
+
+.main-section {
+  padding: 5px 0px;
+}
+
+.main-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-inner-box {
+  padding: 0px 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.main-inner-box h2 {
+  color: rgb(5, 5, 5);
+  text-align: center;
+}
+
+.main-inner-box ul {
+  padding: 0px 1.2rem;
+}
+
+.main-inner-box ul li {
+  padding: 10px 0px;
+}
+
+section#about {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+section#about h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+section#about p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+section#about h2 {
+  font-size: 1.5em;
+  margin-top: 40px;
+}
+
+.form-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.form-btns button {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: #fff;
+  width: 20%;
+  border: none;
+  border-radius: 4px;
+}
+
+
+/* Heading for Pharma Trace */
+.pharma-trace-heading {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Image for Pharma Trace */
+.pharma-trace-image {
+  width: 90%;
+  height: 90%;
+  max-height: 200px;
+  object-fit: cover;
+  margin: 10 center;
+  display: block;
+  margin-left: 300px;
+}
+
+#leftImage {
+  width: 380px;
+  height: 400px;
+  margin-left: 100px;
+  margin-top: 10px;
+}
+
+#rightImage {
+  width: 380px;
+  height: 400px;
+  margin-left:1200px;
+  margin-top: -400px;
+  margin-bottom: 80px;
+}
+
+/* Container for the entire user interface */
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Align vertically in the center */
+  margin-top: -380px;
+}
+
+/* Product home box */
+
+
+/* Buttons in product home box */
+.product-home-box button {
+  background-color: #0b0b0b;
+  color: white;
+  padding: 15px 20px;
+  /* Adjusted padding for a more balanced look */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  /* Added space between buttons */
+}
+
+/* Search product container */
+.search-product-id {
+  display: flex;
+  align-items: center;
+  /* Align input and button vertically */
+}
+
+/* Search input field */
+.search-product-id input[type="search"] {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+/* Search button */
+.search-product-id button {
+  background-color: #060606;
+  color: white;
+  padding: 10px 20px;
+  margin-top: -10px;
+  border: none;
+  border-radius: 1px 5px 5px 0;
+  cursor: pointer;
+}
+
+#cameraContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  /* This will move the container to the right */
+  margin-right: auto;
+  /* Adjust margin as needed */
+  margin-top: 0px;
+}
+
+#toggleButton {
+  padding: 12px;
+  background-color: #060606;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+#toggleButton:hover {
+  background-color: #0a0a0a;
+}
+
+
+
+/* Style for the dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style for the overlay buttons */
+.overlay-btns {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Style for the overlay button items */
+.overlay-btns button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Style for the overlay button items on hover */
+.overlay-btns button:hover {
+  background-color: #ddd;
+}
+
+/* Show the overlay buttons when hovering over the profile button */
+.dropdown:hover .overlay-btns {
+  display: block;
+}
+
+/* Style for the profile button */
+.profile-btn {
+  background-color: #f8f7f7;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Style for the overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for the popup content */
+.popup-content {
+  background-color: rgb(42, 41, 41);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  text-align: left;
+}
+
+/* Style for the close button in the popup */
+.close-btn1 {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-right: 620px;
+}
+
+
+.info-container {
+  text-align: center;
+}
+
+.info-container h1 {
+  margin-bottom: 20px;
+}
+
+.info-options-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.info-options-box button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.info-options-box button:hover {
+  background-color: #2980b9;
+}
