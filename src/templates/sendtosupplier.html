@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributor Management System</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/pharmalogo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/header.css">
+    <link rel="stylesheet" href="../static/footer.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal.css') }}">
+    <style>
+        #one {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+    <div id="header-placeholder"></div>
+    <header>
+        <section class="content">
+            <div class="header">
+                <img src="{{ url_for('static', filename='images/pharmalogo.png') }}" alt="" class="logo">
+                <h1>Pharma Trace</h1>
+            </div>
+        </section>
+        <nav>
+            <div class="left-nav">
+                <li><a href="/ddashboard">Home</a></li>
+                <li><a href="/supplierslist">Suppliers List</a></li>
+                <li><a href="/distributedproducts">My Products</a></li>
+                <li><a href="/sendtosupplier">Send to Supplier</a></li>
+                <li><a href="/saboutus">About Us</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </div>
+            
+        </nav>
+    </header>
+
+    <div class="info-container">
+        <h1>Distributor Management System</h1>
+
+    </div>
+
+    <!-- Popup container -->
+    <div class="container">
+        <!-- Distributor details form -->
+        <h2 id="popupTitle">Send to Supplier</h2>
+        <form action="/sendtosupplierform" method="post">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="sel1">Select the product that you want to distribute:</label>
+                        <select class="form-control" id="lotlabform" name='productid' required>
+                            {%for i in range(0, l1)%}
+                            <option value="{{dashboard_data1[i][0]}}">{{dashboard_data1[i][1]}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sel1">Select the supplier to whom you want to distribute:</label>
+                        <select class="form-control" id="lotlabform" name='supplierid' required>
+                            {%for i in range(0, l2)%}
+                            <option value="{{dashboard_data2[i][0]}}">{{dashboard_data2[i][1]}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+
+                
+                <button type="submit" class="btn btn-warning">Send it to Supplier</button>
+                </div>
+                <span style="color:red">{{err}}</span>
+                <span style="color:green">{{res}}</span>
+        </form>
+        
+
+        <!-- Close button -->
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+    <script>
+        function showPopup1(action) {
+            if (action === 'Add Distributor') {
+                // Customize this function to load product details based on the action
+                // For simplicity, just setting a placeholder title
+                document.getElementById('popupTitle').textContent = action;
+
+                // Display the overlay and popup
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('popup').style.display = 'block';
+            }
+        }
+
+        function hidePopup() {
+            // Hide the overlay and popup
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function openPopup() {
+            document.getElementById("overlay").style.display = "flex";
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("popup").style.display = "none";
+        }
+
+        function logout() {
+            // Add your logic for logout here
+        }
+
+
+    </script>
+
+</body>
+{% include 'footer.html' %}
+<div id="footer-placeholder"></div>
+
+</html>

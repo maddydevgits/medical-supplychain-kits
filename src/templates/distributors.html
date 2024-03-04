@@ -16,6 +16,14 @@
             justify-content: space-evenly;
         }
     </style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -24,42 +32,19 @@
     <header>
         <section class="content">
             <div class="header">
-                <img src="{{ url_for('static', filename='images/pharmalogo.jpg') }}" alt="" class="logo">
+                <img src="{{ url_for('static', filename='images/pharmalogo.png') }}" alt="" class="logo">
                 <h1>Pharma Trace</h1>
             </div>
         </section>
         <nav>
             <div class="left-nav">
-                <li><a href="/index">Home</a></li>
-                <li><a href="/distributors">Distributor MS</a>
-                <li><a href="/products">Product MS</a></li>
-                <li><a href="/aboutus">About Us</a></li>
-            </div>
-            <div class="right-nav">
-                <div class="dropdown">
-                    <button class="profile-btn">Profile</button>
-                    <div class="overlay-btns">
-                        <button onclick="openPopup()">My Profile</button>
-                        <button onclick="logout()">Logout</button>
-                    </div>
-                </div>
-
-                <div class="overlay" id="popupOverlay">
-                    <div class="popup-content">
-                        <h2>Profile Details</h2>
-                        <p>Detail 1: </p>
-                        <p>Detail 2: </p>
-                        <p>Detail 3: </p>
-                        <p>Detail 4: </p>
-                        <p>Detail 5: </p>
-                        <p>Detail 6: </p>
-                        <p>Detail 7: </p>
-                        <p>Detail 8: </p>
-                        <!-- Add more details as needed -->
-                        <button class="close-btn1" onclick="closePopup()">Close</button>
-                    </div>
-                </div>
-
+                <li><a href="/dashboard">Home</a></li>
+                <li><a href="/distributorslist">Distributors List</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/productslist">Products List</a></li>
+                <li><a href="/sendtodistributor">Send to Distributor</a></li>
+                <li><a href="/aboutus">About Us</a></li>   
+                <li><a href="/logout">Logout</a></li> 
             </div>
         </nav>
     </header>
@@ -67,71 +52,56 @@
     <div class="info-container">
         <h1>Distributor Management System</h1>
 
-        <div class="info-options-box">
-            <!-- Buttons to trigger actions -->
-            <button onclick="showPopup1('Add Distributor')">Add Distributor</button>
-            <button onclick="showPopup('Modify Distributor')">Modify Distributor</button>
-            <button onclick="showPopup('Delete Distributor')">Delete Distributor</button>
-            <button>Distributors</button>
-        </div>
     </div>
 
     <!-- Popup container -->
-    <div class="overlay" id="overlay" onclick="hidePopup()"></div>
-    <div class="popup" id="popup">
+    <div class="container">
         <!-- Distributor details form -->
         <h2 id="popupTitle">Add Distributor</h2>
-        <form id="one">
-            <div class="form-half">
+        <form action="/distributorForm" method="post">
+                <div class="col-sm-6">
                 <label for="distributorId">1. Distributor ID:</label>
-                <input type="text" id="distributorId" required>
+                <input type="text" id="distributorId" name="distributorId" class="form-control" required> <br/>
 
                 <label for="distributorName">2. Distributor Name:</label>
-                <input type="text" id="distributorName" required>
+                <input type="text" id="distributorName" name="distributorName" class="form-control" required> <br/>
 
                 <label for="contactInfo">3. Contact Information:</label>
-                <input type="text" id="contactInfo" required>
+                <input type="text" id="contactInfo" Name="contactInfo" class="form-control" required> <br/>
 
                 <label for="address">4. Address:</label>
-                <input type="text" id="address" required>
+                <input type="text" id="address" name="address" class="form-control" required> <br/>
 
                 <label for="email">5. Email:</label>
-                <input type="email" id="email" required>
+                <input type="email" id="email" name="email" class="form-control" required> <br/>
 
                 <label for="phone">6. Phone Number:</label>
-                <input type="tel" id="phone" required>
+                <input type="tel" id="phone" name="phone" class="form-control" required> <br/>
             </div>
-            <div class="form-half">
-
+            <div class="col-sm-6">
                 <label for="tin">7. Tax Identification Number (TIN):</label>
-                <input type="text" id="tin" required>
+                <input type="text" id="tin" name="tin" class="form-control" required> <br/>
 
                 <label for="brn">8. Business Registration Number (BRN):</label>
-                <input type="text" id="brn" required>
+                <input type="text" id="brn" name="brn" class="form-control" required> <br/>
 
-                <label for="productsServices">9. Products/Services Provided:</label>
-                <input type="text" id="productsServices" required>
+                <label for="wallet">9. Wallet Address:</label>
+                <input type="text" id="wallet" name="wallet" class="form-control" required> <br/>
 
                 <label for="emergencyContact">10. Emergency Contact Information:</label>
-                <input type="text" id="emergencyContact" required>
+                <input type="text" id="emergencycontact" name="emergencycontact" class="form-control" required> <br/>
 
-                <label for="username">11. User name:</label>
-                <input type="text" id="username" required>
-
-                <label for="password">12. Password:</label>
-                <input type="password" id="password" required>
-
-
-            </div>
-
-
-            <!-- Display messages -->
-            <div id="statusMessage" class="message"></div>
+                <label for="password">11. Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required> <br/>
+            
+                
+                
+                <button type="submit" class="btn btn-warning">Add Distributor</button>
+                </div>
+                <span style="color:red">{{err}}</span>
+                <span style="color:green">{{res}}</span>
         </form>
-        <div class="form-btns">
-            <button type="submit">Add Distributor</button>
-            <button onclick="hidePopup()">Close</button>
-        </div>
+        
 
         <!-- Close button -->
 

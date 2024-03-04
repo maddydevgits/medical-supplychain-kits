@@ -11,6 +11,14 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='footer.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -31,13 +39,60 @@
 
     <section class="user-container">
         <div class="opt-home search-product-id">
-            <input type="search" placeholder="Search by Product Id...." id="search-product" autocomplete="off">
-            <button>Search</button>
+            <form action="/searchproduct" method="post">
+                <input type="search" placeholder="Search by Product Id...." id="search-product" name="productid" autocomplete="off">
+                <button type="submit">Search</button>
+            </form>
         </div>
-
+        <span style="color:green">{{res}}</span>
+        <span style="color:red">{{err}}</span>
     </section>
-    <div id="cameraContainer">
-        <button id="toggleButton" onclick="toggleCamera()">Scan Me</button>
+    <br/><br/>
+    <section>
+        <div class="container-fluid">
+            <center>
+                <div id="qr-reader" style="width:300px"></div>
+                <div id="qr-reader-results"></div>
+            </center>
+        </div>
+    </section>
+    <br/><br/>
+    <div class="container col-sm-2"></div>
+    <div class="container col-sm-8">
+        {%if data %}
+        <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <td>Product Id</td>
+                <td>{{data[0]}}</td>
+            </tr>
+            <tr>
+                <td>Product Name</td>
+                <td>{{data[1]}}</td>
+            </tr>
+            <tr>
+                <td>Manufacturer</td>
+                <td>{{data[2]}}</td>
+            </tr>
+            <tr>
+                <td>Distributor</td>
+                <td>{{data[3]}}</td>
+            </tr>
+            <tr>
+                <td>Supplier</td>
+                <td>{{data[4]}}</td>
+            </tr>
+            <tr>
+                <td>Date of Manufacturing</td>
+                <td>{{data[5]}}</td>
+            </tr>
+            <tr>
+                <td>Date of Expiry</td>
+                <td>{{data[6]}}</td>
+            </tr>
+        </table>
+    </div>
+    {%endif%}
     </div>
 
     <!-- <section class="main-section">
@@ -174,6 +229,41 @@
         }
     </script>
 <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<script>
+    function docReady(fn) {
+        // see if DOM is already available
+        if (document.readyState === "complete"
+            || document.readyState === "interactive") {
+            // call on next available tick
+            setTimeout(fn, 1);
+        } else {
+            document.addEventListener("DOMContentLoaded", fn);
+        }
+    }
+
+    docReady(function () {
+        var resultContainer = document.getElementById('qr-reader-results');
+        var lastResult, countResults = 0;
+        function onScanSuccess(decodedText, decodedResult) {
+            if (decodedText !== lastResult) {
+                ++countResults;
+                lastResult = decodedText;
+                // Handle on success condition with the decoded message.
+                
+                console.log(`Scan result ${decodedText}`, decodedResult);
+                document.getElementById('qr-reader-results').innerHTML=decodedText;
+                location.href="/searchproduct?productid="+decodedText;
+
+            }
+        }
+
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "qr-reader", { fps: 10, qrbox: 250 });
+        html5QrcodeScanner.render(onScanSuccess);
+    });
+</script>
 
 </body>
 

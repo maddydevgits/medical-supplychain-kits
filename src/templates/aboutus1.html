@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturer Admin Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+   
+
+<body>
+    <header>
+        <section class="content">
+            <div class="header">
+                <img src="{{ url_for('static', filename='images/pharmalogo.png') }}" alt="Example Image" class="logo">
+                <h1>Pharma Trace</h1>
+            </div>
+        </section>
+        <nav>
+            <div class="left-nav">
+                <li><a href="/ddashboard">Home</a></li>
+                <li><a href="/supplierslist">Suppliers List</a></li>
+                <li><a href="/distributedproducts">My Products</a></li>
+                <li><a href="/sendtosupplier">Send to Supplier</a></li>
+                <li><a href="/saboutus">About Us</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </div>
+        </nav>
+    </header>
+    <section class="main-section">
+        <div class="main-content">
+            <div class="main-inner-box">
+                <h2>Our Mission</h2>
+                <ul>
+
+                    <li>We are a dedicated team committed to enhancing transparency and safety in the pharmaceutical
+                        industry
+                        through innovative packaging solutions.</li>
+                </ul>
+            </div>
+
+            <div class="main-inner-box">
+                <h2>QR Code Generation</h2>
+                <p>We specialize in generating QR codes for each tablet sheet with fields including:</p>
+                <ul>
+                    <li>Product ID: Check the status by clicking the "Check Status" button.</li>
+                    <li>Product Name: Check the status by clicking the "Check Status" button.</li>
+                    <li>Manufacturer Information</li>
+                    <li>Lot or Batch Number: Must be unique. Check the status by clicking the "Check Status" button.
+                    </li>
+                    <li>Manufacturing Date</li>
+                    <li>Expiration Date</li>
+                    <li>Serial Number: Check the status by clicking the "Check Status" button.</li>
+                    <li>Unique Device Identifier (UDI)</li>
+                </ul>
+            </div>
+
+            <div class="main-inner-box">
+                <h2>Blockchain Technology Solution</h2>
+                <p>Due to security concerns with the use of isopropyl and other chemicals leading to misinformation, we
+                    utilize blockchain technology to generate hash values and QR codes. Our solution aims to:</p>
+                <ul>
+                    <li>Enhance transparency and safety in the pharmaceutical industry.</li>
+                    <li>Implement comprehensive packaging standards providing crucial information to consumers.</li>
+                    <li>Empower consumers with accurate and up-to-date information about the products they consume.</li>
+                    <li>Significantly reduce the death rate by 85% through improved visibility of manufacturing details.
+                    </li>
+                </ul>
+            </div>
+
+            <h2>Example: Past and New Methodology Packing</h2>
+            <div class="table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>PAST METHODOLOGY PACKING</th>
+                        <th>NEW METHODOLOGY PACKING</th>
+                    </tr>
+                    <tr>
+                        <td>Product</td>
+                        <td colspan="2">OMEZ CAPSULE 20'S</td>
+                    </tr>
+                    <tr>
+                        <td>Manufacturer/Marketer</td>
+                        <td colspan="2">DR.REDDY'S LABORATORIES LTD.</td>
+                    </tr>
+                    <tr>
+                        <td>Composition</td>
+                        <td colspan="2">OMEPRAZOLE-20Mg</td>
+                    </tr>
+                    <tr>
+                        <td>Consume Type</td>
+                        <td colspan="2">ORAL</td>
+                    </tr>
+                    <tr>
+                        <td>Packaging Details</td>
+                        <td>Past Methodology: 20 CAPSULES per strip<br>Strips fixed in 8 paper fitting box.</td>
+                        <td>New Methodology: 20 CAPSULES per strip<br>Strips fixed in 8 paper fitting box.</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>Previous Cost: 10 Rupees (Approx)<br>Market Price: 54.40 Rupees (Approx)</td>
+                        <td>Updated Cost: 10.54 Rupees (Approx)<br>Updated Market Price: 54.80 Rupees (Approx)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <div id="footer-placeholder"></div>
+</body>
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+<!-- <img src="{{ url_for('static', filename='images/example.jpg') }}" alt="Example Image"> -->
+{% include 'footer.html' %}
+<div id="footer-placeholder"></div>
+
+</html>
